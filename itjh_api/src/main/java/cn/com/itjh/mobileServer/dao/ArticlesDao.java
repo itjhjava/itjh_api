@@ -1,6 +1,5 @@
 package cn.com.itjh.mobileServer.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +9,6 @@ import cn.com.itjh.mobileServer.domain.Articles;
  * 
  * 操作文章. <br>
  * 详细说明
- * 
  * @Copyright itjh
  * @Project
  * @author 宋立君
