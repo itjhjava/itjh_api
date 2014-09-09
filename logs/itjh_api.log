@@ -1,0 +1,21 @@
+[itjh_api]2014-09-09 16:52:01 INFO ContextLoader.java Root WebApplicationContext: initialization started
+[itjh_api]2014-09-09 16:52:01 INFO AbstractApplicationContext.java Refreshing Root WebApplicationContext: startup date [Tue Sep 09 16:52:01 CST 2014]; root of context hierarchy
+[itjh_api]2014-09-09 16:52:01 INFO XmlBeanDefinitionReader.java Loading XML bean definitions from class path resource [applicationContext.xml]
+[itjh_api]2014-09-09 16:52:05 INFO XmlBeanDefinitionReader.java Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[itjh_api]2014-09-09 16:52:08 INFO PropertiesLoaderSupport.java Loading properties file from class path resource [jdbc.properties]
+[itjh_api]2014-09-09 16:52:08 INFO PropertiesLoaderSupport.java Loading properties file from class path resource [memcached.properties]
+[itjh_api]2014-09-09 16:52:08 INFO DefaultListableBeanFactory.java Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2145433b: defining beans [articlesServer,articlesServiceImpl,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,propertyHolder,memcachedClientBuilder,memcachedClient,dataSource,sqlSessionFactory,org.mybatis.spring.mapper.MapperScannerConfigurer#0,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,articlesDao]; root of factory hierarchy
+[itjh_api]2014-09-09 16:52:08 ERROR DruidAbstractDataSource.java maxIdle is deprecated
+[itjh_api]2014-09-09 16:52:08 ERROR DruidDataSource.java testWhileIdle is true, validationQuery not set
+[itjh_api]2014-09-09 16:52:13 INFO DruidDataSource.java {dataSource-1} inited
+[itjh_api]2014-09-09 16:52:13 WARN XMemcachedClient.java XMemcachedClient is using Text protocol
+[itjh_api]2014-09-09 16:52:13 INFO SelectorManager.java Creating 4 reactors...
+[itjh_api]2014-09-09 16:52:13 WARN AbstractController.java The Controller started at localhost/127.0.0.1:0 ...
+[itjh_api]2014-09-09 16:52:13 WARN XMemcachedClient.java You are using connection pool for xmemcached client,it's not recommended unless you have test it that it can boost performance in your app.
+[itjh_api]2014-09-09 16:52:13 WARN MemcachedConnector.java Add a session: 203.195.152.45:11211
+[itjh_api]2014-09-09 16:52:14 WARN MemcachedConnector.java Add a session: 203.195.152.45:11211
+[itjh_api]2014-09-09 16:52:14 WARN MemcachedConnector.java Add a session: 203.195.152.45:11211
+[itjh_api]2014-09-09 16:52:17 WARN MemcachedConnector.java Add a session: 203.195.152.45:11211
+[itjh_api]2014-09-09 16:52:17 WARN MemcachedConnector.java Add a session: 203.195.152.45:11211
+[itjh_api]2014-09-09 16:52:17 INFO ContextLoader.java Root WebApplicationContext: initialization completed in 16306 ms
+[itjh_api]2014-09-09 16:52:35 INFO ArticlesServer.java 文章ID:2256

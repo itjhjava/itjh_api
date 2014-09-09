@@ -1,0 +1,2 @@
+[itjh_api]2014-09-09 16:52:08 ERROR DruidAbstractDataSource.java maxIdle is deprecated
+[itjh_api]2014-09-09 16:52:08 ERROR DruidDataSource.java testWhileIdle is true, validationQuery not set
