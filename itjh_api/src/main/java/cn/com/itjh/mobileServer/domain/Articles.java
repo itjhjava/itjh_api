@@ -31,6 +31,8 @@ public class Articles {
     private String popularity; // 文章人气
     
     private String comments; // 文章评论
+    
+    private String topImg; //显示在列表的图片
 
     public String getId() {
         return id;
@@ -96,30 +98,39 @@ public class Articles {
         this.title = title;
     }
 
+
+
 	@Override
-	public String toString() {
-		return "Articles [id=" + id + ", content=" + content + ", title="
-				+ title + ", author=" + author + ", postDate=" + postDate
-				+ ", source=" + source + ", popularity=" + popularity
-				+ ", comments=" + comments + "]";
+    public String toString() {
+        return "Articles [id=" + id + ", content=" + content + ", title=" + title + ", author=" + author
+                + ", postDate=" + postDate + ", source=" + source + ", popularity=" + popularity + ", comments="
+                + comments + ", topImg=" + topImg + "]";
+    }
+
+	public Articles(String id, String content, String title, String author, String postDate, String source,
+            String popularity, String comments, String topImg) {
+        super();
+        this.id = id;
+        this.content = content;
+        this.title = title;
+        this.author = author;
+        this.postDate = postDate;
+        this.source = source;
+        this.popularity = popularity;
+        this.comments = comments;
+        this.topImg = topImg;
+    }
+
+    public Articles() {
+		super();
 	}
 
-	public Articles(String id, String content, String title, String author,
-			String postDate, String source, String popularity, String comments) {
-		super();
-		this.id = id;
-		this.content = content;
-		this.title = title;
-		this.author = author;
-		this.postDate = postDate;
-		this.source = source;
-		this.popularity = popularity;
-		this.comments = comments;
-	}
+    public String getTopImg() {
+        return topImg;
+    }
 
-	public Articles() {
-		super();
-	}
-    
+    public void setTopImg(String topImg) {
+        this.topImg = topImg;
+    }
 	
 }

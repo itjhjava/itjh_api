@@ -211,6 +211,7 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
 			<version>3.0-alpha-1</version>
 		</dependency>
 

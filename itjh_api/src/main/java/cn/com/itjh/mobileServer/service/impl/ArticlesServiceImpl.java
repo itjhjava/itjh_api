@@ -1,8 +1,11 @@
 package cn.com.itjh.mobileServer.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 
@@ -62,6 +65,38 @@ public class ArticlesServiceImpl implements ArticlesService {
         pageMap.put("pageNum", pageNum);
         pageMap.put("showNum", showNum);
         List<Articles> articles = ArticlesDao.getArticlesByNew(pageMap);
+        List<String> listImgUrl = new ArrayList<String>();  
+        List<String> listImgUrlsrc = new ArrayList<String>();  
+        for (int i = 0; i < articles.size(); i++) {
+            String IMGURL_REG = "<img.*src=(.*?)[^>]*?>";  
+            Matcher matcher = Pattern.compile(IMGURL_REG).matcher(articles.get(i).getContent()); 
+            if (matcher.find()) {  
+                listImgUrl.add(matcher.group());
+            } else{
+                listImgUrl.add("<img src=\"null\" />");
+            }
+        }
+        for (int i = 0; i < listImgUrl.size(); i++) {
+            String regxpForImaTagSrcAttrib = "src=\"([^\"]+)\"";
+            Matcher matcher = Pattern.compile(regxpForImaTagSrcAttrib).matcher(listImgUrl.get(i)); 
+            
+            if (matcher.find()) {  
+                listImgUrlsrc.add(matcher.group());  
+            }   else{
+                listImgUrlsrc.add(null);  
+            }
+        }
+//        System.out.println(listImgUrlsrc.size());
+//        System.out.println(listImgUrlsrc);
+        for (int i = 0; i < articles.size(); i++) {
+            articles.get(i).setContent("");
+            if (!"null".equals(listImgUrlsrc.get(i))) {
+                articles.get(i).setTopImg(listImgUrlsrc.get(i).replaceAll("src=", "").replaceAll("\"", ""));
+            }else{
+                articles.get(i).setTopImg("null");
+            }
+        }
+        
         return articles;
     }
 
