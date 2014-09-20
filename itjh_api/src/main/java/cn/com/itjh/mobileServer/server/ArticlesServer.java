@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import net.rubyeye.xmemcached.MemcachedClient;
@@ -69,11 +71,12 @@ public class ArticlesServer {
      * @Modified by none
      */
     @GET
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Path("getArticlesByProgrammingInsights/{pageNum}/{showNum}")
-    public String getArticlesByProgrammingInsights(@PathParam(value = "pageNum") int pageNum,@PathParam(value = "showNum") int showNum) {
-        String articlesJson = null;
+    public String getArticlesByProgrammingInsights(@PathParam(value = "pageNum") int pageNum,@PathParam(value = "showNum") int showNum,@Context HttpServletResponse servletResponse) {
+    	servletResponse.setContentType("application/json;charset=UTF-8");
+    	String articlesJson = null;
         try {
             logger.info("开始获取“编程感悟”文章列表");
             // 从缓存中获取编程的json数据
@@ -118,11 +121,12 @@ public class ArticlesServer {
     * @Modified by none
      */
     @GET
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Path("getArticlesByMoblieDevelopment/{pageNum}/{showNum}")
-    public String getArticlesByMoblieDevelopment(@PathParam(value = "pageNum") int pageNum,@PathParam(value = "showNum") int showNum) {
-        String articlesJson = null;
+    public String getArticlesByMoblieDevelopment(@PathParam(value = "pageNum") int pageNum,@PathParam(value = "showNum") int showNum,@Context HttpServletResponse servletResponse) {
+    	servletResponse.setContentType("application/json;charset=UTF-8");
+    	String articlesJson = null;
         try {
             logger.info("开始获取“移动开发”文章列表");
             // 从缓存中获取编程的json数据
@@ -169,10 +173,11 @@ public class ArticlesServer {
      * @Modified by none
      */
     @GET
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("getArticlesByArtticsId/{artticsId}")
-    public String getArticlesByArtticsId(@PathParam(value = "artticsId") String artticsId) {
-        logger.info("文章ID:" + artticsId);
+    public String getArticlesByArtticsId(@PathParam(value = "artticsId") String artticsId,@Context HttpServletResponse servletResponse) {
+    	servletResponse.setContentType("application/json;charset=UTF-8");
+    	logger.info("文章ID:" + artticsId);
         String articlesJson = "";
         try {
             String articlesJsonMen = memcachedClient.get(artticsId);
@@ -213,9 +218,10 @@ public class ArticlesServer {
     * @Modified by none
      */
     @GET
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("getArticlesByNew/{pageNum}/{showNum}")
-    public String getArticlesByNew(@PathParam(value = "pageNum") int pageNum,@PathParam(value = "showNum") int showNum){
+    public String getArticlesByNew(@PathParam(value = "pageNum") int pageNum,@PathParam(value = "showNum") int showNum,@Context HttpServletResponse servletResponse){
+    	servletResponse.setContentType("application/json;charset=UTF-8");
         String articlesJson = null;
         try {
             logger.info("开始获取最新发布的文章列表");
