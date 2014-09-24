@@ -184,12 +184,12 @@ public class ArticlesServer {
             if ("".equals(articlesJsonMen) || null == articlesJsonMen) {
                 Articles articles = articlesService.getArticlesByArtticsId(artticsId);
                 articlesJson = gson.toJson(articles);
-                // 把编程感悟的文章列表json存放到memcached中，缓存时间为6个小时
                 if (null != articles) {
-                    //memcachedClient.set(artticsId, 0, articlesJson);
-                    //logger.info("文章id:"+artticsId+"成功缓存到memcached中");
-                    // logger.info("缓存内容是：\n"+articlesJson);
-                }
+                    // 把文章详情json存放到memcached中，缓存时间为6个小时
+                    memcachedClient.set(artticsId, 60 * 60 * 6, articlesJson);
+                    logger.info("文章id:"+artticsId+"成功缓存到memcached中");
+//                     logger.info("缓存内容是：\n"+articlesJson);
+                } 
             } else {
                 logger.info("从缓存中获取文章id:"+artticsId);
                 return articlesJsonMen;
@@ -226,23 +226,23 @@ public class ArticlesServer {
         try {
             logger.info("开始获取最新发布的文章列表");
             // 从缓存中获取编程的json数据
-            String memArticlesJson = memcachedClient.get("articles_new_"+pageNum);
+            String memArticlesJson = memcachedClient.get("articles_new_");
             if ("".equals(memArticlesJson) || null == memArticlesJson) {
                 pageNum =pageNum*showNum;
                 List<Articles> articles = articlesService.getArticlesByNew(pageNum,showNum);
                 articlesJson = gson.toJson(articles);
-                // 把最新发布的文章列表json存放到memcached中，缓存时间为6个小时
                 if (null != articles && articles.size() != 0) {
-                    //memcachedClient.set("articles_new_"+pageNum, 60 * 60 * 6, articlesJson);
-                    //logger.info("移动开发列表成功缓存到memcached中,缓存内容是：\n");
+                    //把最新发布的文章列表json存放到memcached中，缓存时间为6个小时
+                   // memcachedClient.set("articles_new", 60 * 60 * 6, articlesJson);
+                    logger.info("最新发布列表成功缓存到memcached中,缓存内容是：\n");
                     // logger.info(articlesJson);
                 }
             } else {
-                logger.info("从缓存中获取“移动开发”文章列表");
+                logger.info("从缓存中获取“最新发布”文章列表");
                 return memArticlesJson;
             }
         } catch (Exception e) {
-            logger.error("获取“移动开发”文章列表失败\n");
+            logger.error("获取“最新发布”文章列表失败\n");
             logger.equals(e.getMessage());
             e.printStackTrace();
         }
