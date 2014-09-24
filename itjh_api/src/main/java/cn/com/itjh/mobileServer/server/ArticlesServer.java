@@ -140,7 +140,7 @@ public class ArticlesServer {
                     //memcachedClient.set("articles_ydkf_"+pageNum, 60 * 60 * 6, articlesJson);
                     //logger.info("移动开发列表成功缓存到memcached中,缓存内容是：\n");
                     // logger.info(articlesJson);
-                }
+                } 
             } else {
                 logger.info("从缓存中获取“移动开发”文章列表");
                 return memArticlesJson;
